@@ -7,8 +7,19 @@ import java.util.List;
 import java.util.Random;
 
 public class CarService {
-    public CarService() {}
 
+    private static CarService instance;
+
+    private CarService() {}
+
+    public static CarService getInstance() {
+        if(instance == null) {
+            instance = new CarService();
+        }
+        return instance;
+    }
+
+    // style code
     public List<Car> getCars() {
         List<Car> listCar = new ArrayList<>();
         for(int i = 0; i <6; i++) {

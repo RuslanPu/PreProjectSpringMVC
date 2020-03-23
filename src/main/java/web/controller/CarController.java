@@ -17,8 +17,12 @@ import java.util.Map;
 @Controller
 @RequestMapping("/")
 public class CarController {
+
+    CarService service = CarService.getInstance();
+
     @RequestMapping(value = "cars", method = RequestMethod.GET)
     public String printWelcome(@RequestParam Map<String,String> allRequestParams, ModelMap model) {
+        //интернационализации spring
         if(allRequestParams.size()!=0) {
             if(allRequestParams.get("locale").equals("ru")) {
                 model.addAttribute("handler", "МАШИНЫ");
@@ -29,8 +33,8 @@ public class CarController {
             }
         } else { model.addAttribute("handler", "Список машин | локаль не выбрана");}
 
+        //singletone
 
-        CarService service = new CarService();
         List<Car> listCars = service.getCars();
         model.addAttribute("list",listCars);
 
