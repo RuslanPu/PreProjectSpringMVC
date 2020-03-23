@@ -1,6 +1,7 @@
 package web.controller;
 
 import org.springframework.cglib.core.Local;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,20 +21,21 @@ public class CarController {
 
     CarService service = CarService.getInstance();
 
-    @RequestMapping(value = "cars", method = RequestMethod.GET)
-    public String printWelcome(@RequestParam Map<String,String> allRequestParams, ModelMap model) {
-        //интернационализации spring
-        if(allRequestParams.size()!=0) {
-            if(allRequestParams.get("locale").equals("ru")) {
-                model.addAttribute("handler", "МАШИНЫ");
-            } else if(allRequestParams.get("locale").equals("en")) {
-                model.addAttribute("handler", "CARS");
-        } else {
-                model.addAttribute("handler", "Список машин | локаль не выбрана");
-            }
-        } else { model.addAttribute("handler", "Список машин | локаль не выбрана");}
+    @RequestMapping(value = "cars", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public String printWelcome(ModelMap model) {
 
-        //singletone
+//        if(allRequestParams.size()!=0) {
+//            if(allRequestParams.get("locale").equals("ru")) {
+//                model.addAttribute("handler", "МАШИНЫ");
+//            } else if(allRequestParams.get("locale").equals("en")) {
+//                model.addAttribute("handler", "CARS");
+//        } else {
+//                model.addAttribute("handler", "Список машин | локаль не выбрана");
+//            }
+//        } else { model.addAttribute("handler", "Список машин | локаль не выбрана");}
+
+
+
 
         List<Car> listCars = service.getCars();
         model.addAttribute("list",listCars);

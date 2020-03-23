@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%--
   Created by IntelliJ IDEA.
   User: FOX
@@ -9,10 +11,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>${handler}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title><spring:message code="app.title"/></title>
 </head>
 <body>
-    <h1>List of Cars</h1>
+    <h1><spring:message code="app.h1"/></h1>
     <table>
         <tr>
             <th>Model</th>

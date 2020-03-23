@@ -22,7 +22,7 @@ public class CarService {
     // style code
     public List<Car> getCars() {
         List<Car> listCar = new ArrayList<>();
-        for(int i = 0; i <6; i++) {
+        for(int i = 0; i < 6; i++) {
             listCar.add(generateCar());
         }
         return listCar;
@@ -32,8 +32,8 @@ public class CarService {
         Random r = new Random();
         Integer randomInt = r.nextInt(11);
         Car car = new Car();
-        car.setModel("model"+randomInt);
-        car.setSeries("series"+randomInt);
+        car.setModel("model" + randomInt);
+        car.setSeries("series" + randomInt);
         car.setCost(new Long(randomInt*10000));
         return car;
     }
